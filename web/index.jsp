@@ -3,13 +3,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="customerStyle.css">
         
         <title>Customer Information</title>
     </head>
 
     <body>
 
-   
+   <div class="wrap">
+
+            <%@ include file="includes/header.jsp" %>
+
+            <%@ include file="includes/menu.jsp" %>
+
+            <div class="main">
 
             
 
@@ -17,7 +24,11 @@
 
                 <a href="read"> View All Customers</a>
 
-           
+            </div>
+
+            <%@ include file="includes/footer.jsp" %>
+
+        </div>
 
            
 

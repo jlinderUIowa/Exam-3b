@@ -70,7 +70,7 @@ public class ReadQuery1 {
         
         String table = "";
         
-        table += "<table border=1>";
+        
                
         
         
@@ -124,6 +124,10 @@ public class ReadQuery1 {
                 
                 table += "<td>";
                 table += customer.getEmailAddress();
+                table += "</td>";
+                
+                table += "<td>";
+                table += "<a href=delete?customerID=" + customer.getCustomerID() + "> Delete </a>";
                 table += "</td>";
                 
                 
