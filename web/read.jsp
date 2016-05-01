@@ -19,7 +19,9 @@
                 <%= table%>
                
 
-             
+                <br><br>
+                
+                <a href ="add">Add A New Customer</a>
 
                
 
