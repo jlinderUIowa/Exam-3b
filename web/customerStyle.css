@@ -14,7 +14,7 @@
 
 
 body{
-    background-color: #C0C0C0;
+    background-color: #808080;
     font-family: serif;
     font-size: 14pt;
     color: black;
@@ -55,14 +55,14 @@ table {
 th {
     height: 50px;
     text-align: center;
-    color: #BA55D3;
+    color: black;
     background-color: #00FF00;
     padding: 5px;
 }
 
 td {
     background-color: #BA55D3;
-    color: #00FF00;
+    color: black;
     height: 25px;
     vertical-align: bottom;
     text-align: center;
@@ -98,6 +98,7 @@ margin: 0;
 display: inline;
 padding: 0;
 margin: 0;
+color: #00FF00;
 }
 
 .navlist li:before { content: "| "; }
