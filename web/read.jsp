@@ -46,7 +46,7 @@
                 
               </div>
                 
-               <a href ="add">Add A New Customer</a>
+                    <br><br>
 
                <%@ include file="includes/footer.jsp" %>
 

@@ -14,25 +14,25 @@ import java.util.logging.Logger;
 import model.Customers;
 
 
-public class ReadQuery1 {
+public class SearchQuery {
     
     private Connection conn;
     private ResultSet results;
     
-    public ReadQuery1() {
+    public SearchQuery() {
         
-    Properties props = new Properties();
-    InputStream instr = getClass().getResourceAsStream("dbConn.properties");
+        Properties props = new Properties();
+        InputStream instr = getClass().getResourceAsStream("dbConn.properties");
     
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     String driver = props.getProperty("driver.name");
@@ -43,36 +43,41 @@ public class ReadQuery1 {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, passwd);
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void doRead() {
-      
+    public void doSearch(String Name) {
+        
         try {
-            String query = "SELECT * FROM customers ORDER BY customerID ASC";
+            String query = "SELECT * FROM customers WHERE UPPER (firstName) LIKE ? OR UPPER (lastName) LIKE ? ORDER BY customerID ASC";
             
             PreparedStatement ps = conn.prepareStatement(query);
+            
+            ps.setString(1, "%" + Name.toUpperCase() + "%");
+            ps.setString(2, "%" + Name.toUpperCase() + "%");
+            
+          
+            
             this.results = ps.executeQuery();
+            
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
     }
     
-    public String getHTMLTable(){
+     public String getHTMLTable(){
         
         String table = "";
         
-        
-               
-        
+     
         
         try {
             while(this.results.next()){
@@ -135,20 +140,16 @@ public class ReadQuery1 {
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
        
         
         
-        table += "</table>";
-        
             return table;
         
         
     }
-    
-    
-    
+  
 }

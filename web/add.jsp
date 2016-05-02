@@ -9,9 +9,18 @@
     </head>
     <body>
 
+        <div class="wrap">
+
+            <%@ include file="includes/header.jsp" %>
+
+            <%@ include file="includes/menu.jsp" %>
+
+            <div class="main">
+        
+        
                 <h1>Add A New Customer</h1>
 
-                <form name ="addForm" action="addCustomer" method="get">
+                <form name ="addForm" action="addCustomer" method="post">
 
                     <label>First Name:</label>
                     <input type="text" name="firstName" value="" required/>
@@ -23,7 +32,7 @@
                     <input type="text" name="address1" value="" required/>
                     <br>
                     <label>Address 2:</label>
-                    <input type="text" name="address2" value="" required/>
+                    <input type="text" name="address2" value=""/>
                     <br>
                     <label>City:</label>
                     <input type="text" name="city" value="" required/>
@@ -42,7 +51,11 @@
 
                 </form>
                    
+          </div>
 
+            <%@ include file="includes/footer.jsp" %>
+
+        </div>
           
     </body>
 </html>
